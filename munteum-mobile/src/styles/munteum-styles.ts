@@ -361,6 +361,13 @@ export const styles = StyleSheet.create({
   gridItem: {
     width: "47%",
   },
+  recentBooksRow: {
+    gap: 12,
+    paddingRight: 8,
+  },
+  recentBookItem: {
+    width: 164,
+  },
   gridTitle: {
     marginTop: 10,
     fontSize: 14,
