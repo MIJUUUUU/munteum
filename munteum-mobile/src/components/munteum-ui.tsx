@@ -16,6 +16,10 @@ export function Card({
 }) {
   return (
     <View style={styles.card}>
+      <View pointerEvents="none" style={[styles.cardOrb, styles.cardOrbTop]} />
+      <View pointerEvents="none" style={[styles.cardOrb, styles.cardOrbBottom]} />
+      <View pointerEvents="none" style={styles.cardSheen} />
+      <View style={styles.cardInner}>
       <View style={styles.cardHeader}>
         <Text style={styles.cardTitle}>{title}</Text>
         {actionLabel ? (
@@ -25,6 +29,7 @@ export function Card({
         ) : null}
       </View>
       {children}
+      </View>
     </View>
   );
 }
@@ -149,9 +154,11 @@ export function NavButton({
   activeTab: TabId;
   onPress: (tab: TabId) => void;
 }) {
+  const active = activeTab === item.id;
   return (
-    <Pressable onPress={() => onPress(item.id)} style={styles.navButton}>
-      <Text style={[styles.navLabel, activeTab === item.id && styles.navLabelActive]}>{item.label}</Text>
+    <Pressable onPress={() => onPress(item.id)} style={[styles.navButton, active && styles.navButtonActive]}>
+      <View style={[styles.navDot, active && styles.navDotActive]} />
+      <Text style={[styles.navLabel, active && styles.navLabelActive]}>{item.label}</Text>
     </Pressable>
   );
 }
@@ -169,6 +176,7 @@ export function MenuRow({ label }: { label: string }) {
   return (
     <View style={styles.menuRow}>
       <Text style={styles.menuLabel}>{label}</Text>
+      <Text style={styles.menuChevron}>›</Text>
     </View>
   );
 }
