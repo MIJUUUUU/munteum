@@ -626,10 +626,9 @@ export const styles = StyleSheet.create({
     alignSelf: "center",
     width: "84%",
     maxWidth: 420,
-    minHeight: 220,
-    maxHeight: 240,
+    maxHeight: 210,
     paddingTop: 14,
-    paddingBottom: 20,
+    paddingBottom: 16,
   },
   overlayHeader: {
     flexDirection: "row",
