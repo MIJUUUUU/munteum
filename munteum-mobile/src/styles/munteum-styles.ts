@@ -623,7 +623,11 @@ export const styles = StyleSheet.create({
     elevation: 8,
   },
   overlayCompact: {
-    maxHeight: "34%",
+    alignSelf: "center",
+    width: "88%",
+    maxHeight: "28%",
+    paddingTop: 14,
+    paddingBottom: 20,
   },
   overlayHeader: {
     flexDirection: "row",
