@@ -23,10 +23,10 @@ export function CalendarScreen({
 }) {
   return (
     <>
-      <Card title="캘린더">
+      <Card title="감상문 캘린더">
         <View style={styles.calendarHeader}>
           <Text style={styles.sectionSubhead}>{formatMonthLabel(selectedDate)}</Text>
-          <Text style={styles.caption}>{selectedDate}</Text>
+          <Text style={styles.caption}>감상문을 남긴 날을 다시 볼 수 있어요.</Text>
         </View>
         <View style={styles.daysRow}>
           {buildCalendarCells(selectedDate).map((cell) =>
@@ -53,7 +53,7 @@ export function CalendarScreen({
           )}
         </View>
       </Card>
-      <Card title={`${new Date(selectedDate).getMonth() + 1}월 ${new Date(selectedDate).getDate()}일의 기록`}>
+      <Card title={`${new Date(selectedDate).getMonth() + 1}월 ${new Date(selectedDate).getDate()}일의 감상문`}>
         {dailyNotes.length > 0 ? (
           dailyNotes.map((note) => {
             const userBook = userBooksById[note.userBookId];
@@ -69,8 +69,12 @@ export function CalendarScreen({
           })
         ) : (
           <EmptyState
-            title={daysWithNotes.length > 0 ? "이 날짜에는 기록이 없어요." : "이번 달에는 아직 남겨둔 문장이 없어요."}
-            description={daysWithNotes.length > 0 ? "다른 날짜를 선택해보세요." : "기록을 남기면 날짜별로 다시 볼 수 있어요."}
+            title={daysWithNotes.length > 0 ? "이 날짜에는 감상문이 없어요." : "이번 달에는 아직 감상문이 없어요."}
+            description={
+              daysWithNotes.length > 0
+                ? "다른 날짜를 선택해보세요."
+                : "감상문을 남기면 날짜별로 다시 꺼내볼 수 있어요."
+            }
           />
         )}
       </Card>
