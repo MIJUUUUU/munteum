@@ -56,6 +56,7 @@ export function HomeScreen({
             const book = booksById[userBook.bookId];
             return (
               <Pressable key={note.id} onPress={() => onOpenNote(note)} style={styles.noteCard}>
+                <Text style={styles.noteEyebrow}>MEMORY LINE</Text>
                 <Text style={styles.notePreview}>{note.quote ?? note.thought}</Text>
                 <Text style={styles.noteMeta}>
                   {book.title}
