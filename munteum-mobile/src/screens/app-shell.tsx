@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { libraryFilters, navItems } from "../lib/munteum-data";
 import { useMunteumApp } from "../hooks/use-munteum-app";
 import { styles } from "../styles/munteum-styles";
@@ -163,7 +163,18 @@ export function AppOverlays({ app }: { app: MunteumApp }) {
       <DeleteNoteSheet
         visible={app.overlay?.type === "delete-note"}
         onClose={() => app.setOverlay(null)}
-        onDelete={() => (app.overlay?.type === "delete-note" ? app.handleDeleteNote(app.overlay.noteId) : undefined)}
+        onDelete={() =>
+          app.overlay?.type === "delete-note"
+            ? Alert.alert("한 번 더 확인할까요?", "정말 이 감상문을 삭제할까요?", [
+                { text: "취소", style: "cancel" },
+                {
+                  text: "삭제",
+                  style: "destructive",
+                  onPress: () => app.handleDeleteNote(app.overlay!.noteId),
+                },
+              ])
+            : undefined
+        }
       />
     </>
   );
