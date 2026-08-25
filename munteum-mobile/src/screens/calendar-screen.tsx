@@ -53,7 +53,7 @@ export function CalendarScreen({
           )}
         </View>
       </Card>
-      <Card title={`${new Date(selectedDate).getMonth() + 1}월 ${new Date(selectedDate).getDate()}일의 감상문`}>
+      <Card title={`${new Date(selectedDate).getMonth() + 1}월 ${new Date(selectedDate).getDate()}일의 기록`}>
         {dailyNotes.length > 0 ? (
           dailyNotes.map((note) => {
             const userBook = userBooksById[note.userBookId];
