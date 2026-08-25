@@ -5,6 +5,7 @@ import { Note, UserBook, makeId, normalizeText, todayIsoDate } from "../lib/munt
 export function useRecordActions({
   setState,
   readingBooks,
+  notesByUserBookId,
   recordDraft,
   setRecordDraft,
   setRecordError,
@@ -18,6 +19,7 @@ export function useRecordActions({
 }: {
   setState: SetAppState;
   readingBooks: UserBook[];
+  notesByUserBookId: Record<string, Note>;
   recordDraft: DraftNote;
   setRecordDraft: (value: DraftNote) => void;
   setRecordError: (value: string | null) => void;
@@ -30,11 +32,14 @@ export function useRecordActions({
   showToast: ShowToast;
 }) {
   function resetRecordDraft(userBookId?: string) {
+    const resolvedUserBookId = userBookId ?? readingBooks[0]?.id ?? "";
+    const existingNote = resolvedUserBookId ? notesByUserBookId[resolvedUserBookId] : null;
+
     setRecordDraft({
-      userBookId: userBookId ?? readingBooks[0]?.id ?? "",
-      page: "",
-      quote: "",
-      thought: "",
+      userBookId: resolvedUserBookId,
+      page: existingNote?.page ? String(existingNote.page) : "",
+      quote: existingNote?.quote ?? "",
+      thought: existingNote?.thought ?? "",
     });
     setRecordError(null);
   }
@@ -45,7 +50,7 @@ export function useRecordActions({
     const page = recordDraft.page.trim();
 
     if (!recordDraft.userBookId) {
-      setRecordError("기록할 책을 선택해주세요.");
+      setRecordError("감상문을 쓸 책을 선택해주세요.");
       return;
     }
     if (!quote && !thought) {
@@ -58,20 +63,33 @@ export function useRecordActions({
     }
 
     const now = new Date().toISOString();
+    const existingNote = notesByUserBookId[recordDraft.userBookId];
     setState((prev) => ({
       ...prev,
-      notes: [
-        {
-          id: makeId("note"),
-          userBookId: recordDraft.userBookId,
-          page: page ? Number(page) : null,
-          quote,
-          thought,
-          createdAt: now,
-          updatedAt: now,
-        },
-        ...prev.notes,
-      ],
+      notes: existingNote
+        ? prev.notes.map((note) =>
+            note.id === existingNote.id
+              ? {
+                  ...note,
+                  page: page ? Number(page) : null,
+                  quote,
+                  thought,
+                  updatedAt: now,
+                }
+              : note,
+          )
+        : [
+            {
+              id: makeId("note"),
+              userBookId: recordDraft.userBookId,
+              page: page ? Number(page) : null,
+              quote,
+              thought,
+              createdAt: now,
+              updatedAt: now,
+            },
+            ...prev.notes,
+          ],
       userBooks: prev.userBooks.map((item) =>
         item.id === recordDraft.userBookId ? { ...item, updatedAt: now } : item,
       ),
@@ -79,7 +97,7 @@ export function useRecordActions({
     setSelectedDate(todayIsoDate());
     setOverlay(null);
     resetRecordDraft();
-    showToast("success", "오늘의 문장을 남겨두었어요.");
+    showToast("success", existingNote ? "감상을 수정했어요." : "한줄과 감상을 남겨두었어요.");
   }
 
   function openEditNote(note: Note) {
@@ -128,7 +146,7 @@ export function useRecordActions({
     }));
     setOverlay(null);
     resetRecordDraft();
-    showToast("success", "기록을 수정했어요.");
+    showToast("success", "감상을 수정했어요.");
   }
 
   function handleDeleteNote(noteId: string) {
@@ -137,7 +155,7 @@ export function useRecordActions({
       notes: prev.notes.filter((note) => note.id !== noteId),
     }));
     setOverlay(null);
-    showToast("success", "기록을 삭제했어요.");
+    showToast("success", "감상문을 삭제했어요.");
   }
 
   function handleFinishBook() {
@@ -162,7 +180,7 @@ export function useRecordActions({
     }));
     setOverlay(null);
     setFinishForm({ finishedAt: todayIsoDate(), rating: 0, review: "" });
-    showToast("success", "완독한 책으로 기록했어요.");
+    showToast("success", "완독한 책으로 정리했어요.");
   }
 
   function openQuickRecord(userBookId?: string) {

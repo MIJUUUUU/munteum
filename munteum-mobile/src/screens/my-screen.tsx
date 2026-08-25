@@ -21,8 +21,8 @@ export function MyScreen({
       <Card title="올해의 기록">
         <View style={styles.statRow}>
           <StatCard label="읽은 책" value={stats.finishedBooks} />
-          <StatCard label="남긴 기록" value={stats.notesCount} />
-          <StatCard label="기록한 날" value={stats.recordedDays} />
+          <StatCard label="쓴 감상문" value={stats.notesCount} />
+          <StatCard label="쓴 날짜" value={stats.recordedDays} />
         </View>
       </Card>
       <Card title="최근 읽은 책">
@@ -35,7 +35,7 @@ export function MyScreen({
             ))}
           </View>
         ) : (
-          <EmptyState title="아직 다 읽은 책이 없어요." description="한 권을 끝까지 읽고 이곳에 남겨보세요." />
+          <EmptyState title="아직 다 읽은 책이 없어요." description="한 권을 끝까지 읽고 감상문으로 남겨보세요." />
         )}
       </Card>
       <Card title="설정">

@@ -21,8 +21,8 @@ export function MainShell({ app }: { app: MunteumApp }) {
       <View style={styles.header}>
         <View>
           <Text style={styles.wordmark}>MUNTEUM</Text>
-          <Text style={styles.headerTitle}>문장 사이, 생각이 머무는 책장</Text>
-          <Text style={styles.headerSubtitle}>{app.currentUser?.nickname}님의 조용한 기록을 다시 꺼내보세요.</Text>
+          <Text style={styles.headerTitle}>이 책을 읽고 남기는 한줄과 감상</Text>
+          <Text style={styles.headerSubtitle}>{app.currentUser?.nickname}님의 독서감상문을 다시 꺼내보세요.</Text>
         </View>
         <Pressable
           onPress={() => app.setState((prev) => ({ ...prev, sessionUserId: null }))}

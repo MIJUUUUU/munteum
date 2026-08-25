@@ -53,7 +53,7 @@ export function LibraryScreen({
       ) : (
         <EmptyState
           title="아직 책장이 비어 있어요."
-          description="첫 번째 책을 책장에 놓아볼까요?"
+          description="첫 번째 책을 추가하고 감상문을 남겨볼까요?"
           actionLabel="책 찾아보기"
           onAction={onOpenSearch}
         />

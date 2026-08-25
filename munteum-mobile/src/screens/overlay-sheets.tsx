@@ -124,17 +124,17 @@ export function RecordSheet({
   onSave: () => void;
 }) {
   return (
-    <Overlay visible={visible} title="기록 남기기" onClose={onClose}>
+    <Overlay visible={visible} title="한줄과 감상 쓰기" onClose={onClose}>
       {readingBooks.length === 0 ? (
         <EmptyState
-          title="기록할 책이 아직 없어요."
-          description="먼저 책장에 책을 놓아주세요."
+          title="감상문을 쓸 책이 아직 없어요."
+          description="먼저 책을 추가해주세요."
           actionLabel="책장에 책 놓기"
           onAction={onGoSearch}
         />
       ) : (
         <>
-          <Text style={styles.fieldLabel}>기록할 책</Text>
+          <Text style={styles.fieldLabel}>감상문을 쓸 책</Text>
           <View style={styles.listGap}>
             {readingBooks.map((item) => (
               <Pressable
@@ -155,11 +155,11 @@ export function RecordSheet({
           </View>
           <Input label="페이지" placeholder="예: 132" value={recordDraft.page} onChangeText={(value) => onDraftChange("page", value)} />
           <Input multiline label="마음에 머문 문장" placeholder="마음에 남은 문장을 적어보세요" value={recordDraft.quote} onChangeText={(value) => onDraftChange("quote", value)} />
-          <Input multiline label="나의 생각" placeholder="그때 떠오른 생각을 남겨보세요" value={recordDraft.thought} onChangeText={(value) => onDraftChange("thought", value)} />
-          <Text style={styles.caption}>문장과 생각 중 하나는 꼭 남겨야 해요.</Text>
+          <Input multiline label="감상문" placeholder="이 책을 읽고 남기고 싶은 감상을 적어보세요" value={recordDraft.thought} onChangeText={(value) => onDraftChange("thought", value)} />
+          <Text style={styles.caption}>기억에 남는 한줄과 감상을 한 번에 정리해둘 수 있어요.</Text>
           {recordError ? <Text style={styles.errorText}>{recordError}</Text> : null}
           <Pressable style={styles.primaryButton} onPress={onSave}>
-            <Text style={styles.primaryButtonLabel}>남겨두기</Text>
+            <Text style={styles.primaryButtonLabel}>감상 저장하기</Text>
           </Pressable>
         </>
       )}
@@ -200,7 +200,7 @@ export function BookDetailSheet({
           {selectedBookDetail.finishedAt ? <Text style={styles.caption}>완독일 {formatDate(selectedBookDetail.finishedAt)}</Text> : null}
           <View style={styles.actionRow}>
             <Pressable style={styles.primaryInlineButton} onPress={() => onQuickRecord(selectedBookDetail.id)}>
-              <Text style={styles.primaryButtonLabel}>기록 남기기</Text>
+              <Text style={styles.primaryButtonLabel}>감상 쓰기</Text>
             </Pressable>
             {selectedBookDetail.status !== "FINISHED" ? (
               <Pressable style={styles.secondaryInlineButton} onPress={() => onOpenFinish(selectedBookDetail)}>
@@ -208,7 +208,7 @@ export function BookDetailSheet({
               </Pressable>
             ) : null}
           </View>
-          <Text style={styles.sectionSubhead}>남긴 기록</Text>
+          <Text style={styles.sectionSubhead}>남긴 감상문</Text>
           <View style={styles.listGap}>
             {selectedBookNotes.length > 0 ? (
               selectedBookNotes.map((note) => (
@@ -228,7 +228,7 @@ export function BookDetailSheet({
                 </View>
               ))
             ) : (
-              <EmptyState title="아직 이 책에 남겨둔 기록이 없어요." description="마음에 머문 문장이나 생각을 남겨보세요." />
+              <EmptyState title="아직 이 책의 감상문이 없어요." description="기억에 남는 한줄과 감상을 남겨보세요." />
             )}
           </View>
         </>
@@ -255,16 +255,16 @@ export function EditNoteSheet({
   onDelete: () => void;
 }) {
   return (
-    <Overlay visible={visible} title="기록 수정" onClose={onClose}>
+    <Overlay visible={visible} title="감상문 수정" onClose={onClose}>
       <Input label="페이지" placeholder="예: 132" value={recordDraft.page} onChangeText={(value) => onDraftChange("page", value)} />
       <Input multiline label="마음에 머문 문장" placeholder="마음에 남은 문장을 적어보세요" value={recordDraft.quote} onChangeText={(value) => onDraftChange("quote", value)} />
-      <Input multiline label="나의 생각" placeholder="그때 떠오른 생각을 남겨보세요" value={recordDraft.thought} onChangeText={(value) => onDraftChange("thought", value)} />
+      <Input multiline label="감상문" placeholder="이 책을 읽고 남기고 싶은 감상을 적어보세요" value={recordDraft.thought} onChangeText={(value) => onDraftChange("thought", value)} />
       {recordError ? <Text style={styles.errorText}>{recordError}</Text> : null}
       <Pressable style={styles.primaryButton} onPress={onSave}>
-        <Text style={styles.primaryButtonLabel}>저장하기</Text>
+        <Text style={styles.primaryButtonLabel}>수정 저장하기</Text>
       </Pressable>
       <Pressable style={styles.deleteButton} onPress={onDelete}>
-        <Text style={styles.deleteButtonLabel}>삭제하기</Text>
+        <Text style={styles.deleteButtonLabel}>감상문 삭제하기</Text>
       </Pressable>
     </Overlay>
   );
@@ -306,7 +306,7 @@ export function FinishBookSheet({
               </Pressable>
             ))}
           </View>
-          <Input multiline label="한줄평" placeholder="짧게 남겨도 괜찮아요" value={finishForm.review} onChangeText={(value) => onFinishFormChange("review", value)} />
+          <Input multiline label="짧은 감상" placeholder="완독 후 남기고 싶은 짧은 감상을 적어보세요" value={finishForm.review} onChangeText={(value) => onFinishFormChange("review", value)} />
           <Pressable style={styles.primaryButton} onPress={onSave}>
             <Text style={styles.primaryButtonLabel}>완료</Text>
           </Pressable>
@@ -326,8 +326,8 @@ export function DeleteNoteSheet({
   onDelete: () => void;
 }) {
   return (
-    <Overlay visible={visible} title="이 기록을 삭제할까요?" onClose={onClose} compact>
-      <Text style={styles.overlayDescription}>삭제한 기록은 다시 되돌릴 수 없어요.</Text>
+    <Overlay visible={visible} title="이 감상문을 삭제할까요?" onClose={onClose} compact>
+      <Text style={styles.overlayDescription}>삭제한 감상문은 다시 되돌릴 수 없어요.</Text>
       <View style={styles.actionRow}>
         <Pressable style={styles.secondaryInlineButton} onPress={onClose}>
           <Text style={styles.secondaryInlineLabel}>취소</Text>
@@ -346,7 +346,7 @@ export function LoadingScreen() {
       <View style={styles.loadingWrap}>
         <Text style={styles.wordmark}>MUNTEUM</Text>
         <Text style={styles.loadingTitle}>문틈을 준비하고 있어요.</Text>
-        <Text style={styles.authDescription}>저장해둔 책장과 기록을 불러오는 중입니다.</Text>
+        <Text style={styles.authDescription}>저장해둔 책장과 감상문을 불러오는 중입니다.</Text>
       </View>
     </View>
   );

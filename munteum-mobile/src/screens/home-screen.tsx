@@ -26,7 +26,7 @@ export function HomeScreen({
     <>
       <Card
         title="지금 읽고 있는 책"
-        actionLabel={currentReadingBook ? "기록 남기기" : undefined}
+        actionLabel={currentReadingBook ? "한줄과 감상 쓰기" : undefined}
         onAction={currentReadingBook ? () => onQuickRecord(currentReadingBook.id) : undefined}
       >
         {currentReadingBook ? (
@@ -41,14 +41,14 @@ export function HomeScreen({
         ) : (
           <EmptyState
             title="지금 읽고 있는 책이 없어요."
-            description="책장에 책을 놓고 기록을 시작해보세요."
+            description="책을 추가하고 이 책의 한줄과 감상을 남겨보세요."
             actionLabel="책장에 책 놓기"
             onAction={onGoLibrarySearch}
           />
         )}
       </Card>
 
-      <Card title="최근 기록">
+      <Card title="최근 감상">
         {recentNotes.length > 0 ? (
           recentNotes.map((note) => {
             const userBook = userBooksById[note.userBookId];
@@ -66,9 +66,9 @@ export function HomeScreen({
           })
         ) : (
           <EmptyState
-            title="아직 머문 문장이 없어요."
-            description="마음에 남은 문장이나 생각을 가볍게 남겨보세요."
-            actionLabel="첫 기록 남기기"
+            title="아직 감상문이 없어요."
+            description="이 책을 읽고 기억에 남는 한줄과 감상을 남겨보세요."
+            actionLabel="첫 감상 쓰기"
             onAction={() => onQuickRecord()}
           />
         )}

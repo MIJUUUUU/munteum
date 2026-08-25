@@ -65,17 +65,19 @@ export function useMunteumApp() {
         .sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
     [state.notes, userBooksById],
   );
+  const notesByUserBookId = useMemo(
+    () => Object.fromEntries(userNotes.map((note) => [note.userBookId, note])),
+    [userNotes],
+  );
   const readingBooks = userBooks.filter((item) => item.status === "READING");
   const currentReadingBook = [...readingBooks].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))[0] ?? null;
-  const recentNotes = userNotes.slice(0, 3);
+  const recentNotes = Object.values(notesByUserBookId).slice(0, 3);
   const filteredLibrary = userBooks
     .filter((item) => libraryFilter === "ALL" || item.status === libraryFilter)
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   const selectedBookDetail =
     overlay?.type === "book" ? userBooks.find((item) => item.id === overlay.userBookId) ?? null : null;
-  const selectedBookNotes = selectedBookDetail
-    ? userNotes.filter((note) => note.userBookId === selectedBookDetail.id)
-    : [];
+  const selectedBookNotes = selectedBookDetail && notesByUserBookId[selectedBookDetail.id] ? [notesByUserBookId[selectedBookDetail.id]] : [];
   const selectedEditNote = overlay?.type === "edit-note" ? userNotes.find((note) => note.id === overlay.noteId) ?? null : null;
   const selectedFinishBook =
     overlay?.type === "finish" ? userBooks.find((item) => item.id === overlay.userBookId) ?? null : null;
@@ -164,6 +166,7 @@ export function useMunteumApp() {
   } = useRecordActions({
     setState,
     readingBooks,
+    notesByUserBookId,
     recordDraft,
     setRecordDraft,
     setRecordError,
