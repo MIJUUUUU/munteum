@@ -36,8 +36,6 @@ export function MyScreen({
             {recentFinished.map((item) => (
               <Pressable key={item.id} onPress={() => onOpenBook(item.id)} style={styles.recentBookCard}>
                 <BookCover book={booksById[item.bookId]} />
-                <Text style={styles.recentBookTitle}>{booksById[item.bookId].title}</Text>
-                <Text style={styles.recentBookAuthor}>{booksById[item.bookId].author}</Text>
               </Pressable>
             ))}
           </ScrollView>
