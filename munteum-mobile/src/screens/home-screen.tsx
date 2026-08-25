@@ -26,7 +26,7 @@ export function HomeScreen({
     <>
       <Card
         title="지금 읽고 있는 책"
-        actionLabel={currentReadingBook ? "한줄과 감상 쓰기" : undefined}
+        actionLabel={currentReadingBook ? "감상 쓰기" : undefined}
         onAction={currentReadingBook ? () => onQuickRecord(currentReadingBook.id) : undefined}
       >
         {currentReadingBook ? (
@@ -34,7 +34,8 @@ export function HomeScreen({
             <BookCover book={booksById[currentReadingBook.bookId]} large />
             <Text style={styles.bookTitle}>{booksById[currentReadingBook.bookId].title}</Text>
             <Text style={styles.bookMeta}>{booksById[currentReadingBook.bookId].author}</Text>
-            <Text style={styles.caption}>
+            <Text style={styles.heroPrompt}>오늘은 어떤 문장이 가장 오래 남았나요?</Text>
+            <Text style={styles.heroMetaLine}>
               {currentReadingBook.startedAt ? `시작 ${formatDate(currentReadingBook.startedAt)}` : "읽고 있어요"}
             </Text>
           </Pressable>

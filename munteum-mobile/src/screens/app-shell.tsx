@@ -18,10 +18,16 @@ type MunteumApp = ReturnType<typeof useMunteumApp>;
 export function MainShell({ app }: { app: MunteumApp }) {
   return (
     <View style={styles.container}>
+      <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraTop]} />
+      <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraBottom]} />
+
       <View style={styles.header}>
         <View>
           <Text style={styles.wordmark}>MUNTEUM</Text>
-          <Text style={styles.headerTitle}>이 책을 읽고 남기는 한줄과 감상</Text>
+          <View style={styles.headerMoodPill}>
+            <Text style={styles.headerMoodLabel}>Today&apos;s Quiet Reading</Text>
+          </View>
+          <Text style={styles.headerTitle}>읽고 남기는 조용한 문장과 감상</Text>
           <Text style={styles.headerSubtitle}>{app.currentUser?.nickname}님의 독서감상문을 다시 꺼내보세요.</Text>
         </View>
         <Pressable
@@ -39,7 +45,7 @@ export function MainShell({ app }: { app: MunteumApp }) {
             booksById={app.booksById}
             recentNotes={app.recentNotes}
             userBooksById={app.userBooksById}
-            onOpenBook={(userBookId) => app.setOverlay({ type: "book", userBookId })}
+            onOpenBook={app.openBookDetail}
             onQuickRecord={app.openQuickRecord}
             onOpenNote={app.openEditNote}
             onGoLibrarySearch={() => {
@@ -56,7 +62,7 @@ export function MainShell({ app }: { app: MunteumApp }) {
             filteredLibrary={app.filteredLibrary}
             booksById={app.booksById}
             onFilterChange={app.setLibraryFilter}
-            onOpenBook={(userBookId) => app.setOverlay({ type: "book", userBookId })}
+            onOpenBook={app.openBookDetail}
             onOpenSearch={() => app.setOverlay({ type: "search" })}
           />
         ) : null}
@@ -78,7 +84,7 @@ export function MainShell({ app }: { app: MunteumApp }) {
             stats={app.stats}
             recentFinished={app.recentFinished}
             booksById={app.booksById}
-            onOpenBook={(userBookId) => app.setOverlay({ type: "book", userBookId })}
+            onOpenBook={app.openBookDetail}
             onLogout={() => app.setState((prev) => ({ ...prev, sessionUserId: null }))}
           />
         ) : null}
