@@ -110,23 +110,27 @@ export function Overlay({
   title,
   onClose,
   compact,
+  hideCloseButton,
   children,
 }: {
   visible: boolean;
   title: string;
   onClose: () => void;
   compact?: boolean;
+  hideCloseButton?: boolean;
   children: ReactNode;
 }) {
   return (
     <Modal animationType="fade" transparent visible={visible}>
       <View style={styles.overlayBackdrop}>
         <View style={[styles.overlayCard, compact && styles.overlayCompact]}>
-          <View style={styles.overlayHeader}>
-            <Text style={styles.overlayTitle}>{title}</Text>
-            <Pressable onPress={onClose} style={styles.tagButton}>
-              <Text style={styles.tagButtonLabel}>닫기</Text>
-            </Pressable>
+          <View style={[styles.overlayHeader, hideCloseButton && styles.overlayHeaderCentered]}>
+            <Text style={[styles.overlayTitle, hideCloseButton && styles.overlayTitleCentered]}>{title}</Text>
+            {!hideCloseButton ? (
+              <Pressable onPress={onClose} style={styles.tagButton}>
+                <Text style={styles.tagButtonLabel}>닫기</Text>
+              </Pressable>
+            ) : null}
           </View>
           <ScrollView contentContainerStyle={[styles.overlayContent, compact && styles.overlayContentCompact]}>
             {children}

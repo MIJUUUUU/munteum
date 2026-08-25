@@ -631,10 +631,16 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 14,
   },
+  overlayHeaderCentered: {
+    justifyContent: "center",
+  },
   overlayTitle: {
     fontSize: 24,
     fontWeight: "600",
     color: COLORS.ink,
+  },
+  overlayTitleCentered: {
+    textAlign: "center",
   },
   overlayContent: {
     gap: 12,

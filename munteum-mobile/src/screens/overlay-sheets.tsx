@@ -326,7 +326,7 @@ export function DeleteNoteSheet({
   onDelete: () => void;
 }) {
   return (
-    <Overlay visible={visible} title="이 감상문을 삭제할까요?" onClose={onClose} compact>
+    <Overlay visible={visible} title="이 감상문을 삭제할까요?" onClose={onClose} compact hideCloseButton>
       <Text style={styles.overlayDescription}>삭제한 감상문은 다시 되돌릴 수 없어요.</Text>
       <View style={styles.actionRow}>
         <Pressable style={styles.secondaryInlineButton} onPress={onClose}>
