@@ -70,11 +70,7 @@ export function CalendarScreen({
         ) : (
           <EmptyState
             title={daysWithNotes.length > 0 ? "이 날짜에는 감상문이 없어요." : "이번 달에는 아직 감상문이 없어요."}
-            description={
-              daysWithNotes.length > 0
-                ? "다른 날짜를 선택해보세요."
-                : "감상문을 남기면 날짜별로 다시 꺼내볼 수 있어요."
-            }
+            description={daysWithNotes.length > 0 ? "다른 날짜를 선택해보세요." : "아직 남겨둔 기록이 없어요."}
           />
         )}
       </Card>
