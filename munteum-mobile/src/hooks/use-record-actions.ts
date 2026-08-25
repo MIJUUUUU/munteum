@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import { createDefaultFinishForm } from "../screens/overlay-sheets";
 import { DraftNote, FinishForm, OverlayState, SetAppState, ShowToast } from "./munteum-hook-types";
 import { Note, UserBook, makeId, normalizeText, todayIsoDate } from "../lib/munteum-data";
@@ -98,6 +99,10 @@ export function useRecordActions({
     setOverlay(null);
     resetRecordDraft();
     showToast("success", existingNote ? "감상을 수정했어요." : "한줄과 감상을 남겨두었어요.");
+    Alert.alert(
+      existingNote ? "수정되었어요" : "저장되었어요",
+      existingNote ? "감상문이 수정되었습니다." : "한줄과 감상문이 저장되었습니다.",
+    );
   }
 
   function openEditNote(note: Note) {
@@ -147,6 +152,7 @@ export function useRecordActions({
     setOverlay(null);
     resetRecordDraft();
     showToast("success", "감상을 수정했어요.");
+    Alert.alert("수정되었어요", "감상문이 수정되었습니다.");
   }
 
   function handleDeleteNote(noteId: string) {
