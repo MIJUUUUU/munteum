@@ -111,6 +111,7 @@ export function Overlay({
   onClose,
   compact,
   hideCloseButton,
+  titleStyle,
   children,
 }: {
   visible: boolean;
@@ -118,6 +119,7 @@ export function Overlay({
   onClose: () => void;
   compact?: boolean;
   hideCloseButton?: boolean;
+  titleStyle?: object;
   children: ReactNode;
 }) {
   return (
@@ -125,7 +127,7 @@ export function Overlay({
       <View style={styles.overlayBackdrop}>
         <View style={[styles.overlayCard, compact && styles.overlayCompact]}>
           <View style={[styles.overlayHeader, hideCloseButton && styles.overlayHeaderCentered]}>
-            <Text style={[styles.overlayTitle, hideCloseButton && styles.overlayTitleCentered]}>{title}</Text>
+            <Text style={[styles.overlayTitle, hideCloseButton && styles.overlayTitleCentered, titleStyle]}>{title}</Text>
             {!hideCloseButton ? (
               <Pressable onPress={onClose} style={styles.tagButton}>
                 <Text style={styles.tagButtonLabel}>닫기</Text>
@@ -169,11 +171,26 @@ export function NavButton({
   );
 }
 
-export function StatCard({ label, value }: { label: string; value: number }) {
+export function StatCard({
+  label,
+  value,
+  variant = "default",
+}: {
+  label: string;
+  value: number;
+  variant?: "default" | "featured" | "soft";
+}) {
   return (
-    <View style={styles.statCard}>
-      <Text style={styles.statValue}>{value}</Text>
-      <Text style={styles.statLabel}>{label}</Text>
+    <View
+      style={[
+        styles.statCard,
+        variant === "featured" && styles.statCardFeatured,
+        variant === "soft" && styles.statCardSoft,
+      ]}
+    >
+      <View style={[styles.statAccentDot, variant === "featured" && styles.statAccentDotFeatured]} />
+      <Text style={[styles.statValue, variant === "featured" && styles.statValueFeatured]}>{value}</Text>
+      <Text style={[styles.statLabel, variant === "featured" && styles.statLabelFeatured]}>{label}</Text>
     </View>
   );
 }

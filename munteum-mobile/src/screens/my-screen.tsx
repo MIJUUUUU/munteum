@@ -21,9 +21,9 @@ export function MyScreen({
       <Card title="올해의 기록">
         <Text style={styles.sectionLead}>올해 읽은 책과 남겨둔 감상을 한눈에 볼 수 있어요.</Text>
         <View style={styles.statRow}>
-          <StatCard label="읽은 책" value={stats.finishedBooks} />
+          <StatCard label="읽은 책" value={stats.finishedBooks} variant="featured" />
           <StatCard label="쓴 감상문" value={stats.notesCount} />
-          <StatCard label="쓴 날짜" value={stats.recordedDays} />
+          <StatCard label="쓴 날짜" value={stats.recordedDays} variant="soft" />
         </View>
       </Card>
       <Card title="최근 읽은 책">

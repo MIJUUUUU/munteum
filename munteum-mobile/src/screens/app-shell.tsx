@@ -88,6 +88,8 @@ export function MainShell({ app }: { app: MunteumApp }) {
 }
 
 export function AppOverlays({ app }: { app: MunteumApp }) {
+  const deleteNoteId = app.overlay?.type === "delete-note" ? app.overlay.noteId : null;
+
   return (
     <>
       <SearchSheet
@@ -160,16 +162,16 @@ export function AppOverlays({ app }: { app: MunteumApp }) {
       />
 
       <DeleteNoteSheet
-        visible={app.overlay?.type === "delete-note"}
+        visible={!!deleteNoteId}
         onClose={() => app.setOverlay(null)}
         onDelete={() =>
-          app.overlay?.type === "delete-note"
+          deleteNoteId
             ? Alert.alert("한 번 더 확인할까요?", "정말 이 감상문을 삭제할까요?", [
                 { text: "취소", style: "cancel" },
                 {
                   text: "삭제",
                   style: "destructive",
-                  onPress: () => app.handleDeleteNote(app.overlay!.noteId),
+                  onPress: () => app.handleDeleteNote(deleteNoteId),
                 },
               ])
             : undefined

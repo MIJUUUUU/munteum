@@ -492,17 +492,43 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.72)",
+    position: "relative",
+    overflow: "hidden",
+  },
+  statCardFeatured: {
+    backgroundColor: "rgba(246,232,214,0.96)",
+    transform: [{ translateY: -4 }],
+  },
+  statCardSoft: {
+    backgroundColor: "rgba(252,247,239,0.98)",
+  },
+  statAccentDot: {
+    position: "absolute",
+    top: 12,
+    width: 7,
+    height: 7,
+    borderRadius: 999,
+    backgroundColor: "rgba(209,178,132,0.55)",
+  },
+  statAccentDotFeatured: {
+    backgroundColor: "#D1B284",
   },
   statValue: {
     fontSize: 30,
     fontWeight: "700",
     color: COLORS.ink,
   },
+  statValueFeatured: {
+    fontSize: 34,
+  },
   statLabel: {
     marginTop: 8,
     fontSize: 12,
     color: COLORS.muted,
     textAlign: "center",
+  },
+  statLabelFeatured: {
+    color: "#7D6B56",
   },
   menuRow: {
     backgroundColor: "rgba(255,249,241,0.94)",

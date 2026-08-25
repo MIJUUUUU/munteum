@@ -162,6 +162,7 @@ export function useRecordActions({
     }));
     setOverlay(null);
     showToast("success", "감상문을 삭제했어요.");
+    Alert.alert("삭제되었어요", "감상문이 삭제되었습니다.");
   }
 
   function handleFinishBook() {
