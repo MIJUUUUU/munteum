@@ -2,7 +2,7 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { libraryFilters, navItems } from "../lib/munteum-data";
 import { useMunteumApp } from "../hooks/use-munteum-app";
 import { styles } from "../styles/munteum-styles";
-import { NavButton, Toast } from "../components/munteum-ui";
+import { NavButton } from "../components/munteum-ui";
 import { CalendarScreen, HomeScreen, LibraryScreen, MyScreen } from "./tab-screens";
 import {
   BookDetailSheet,
@@ -20,20 +20,6 @@ export function MainShell({ app }: { app: MunteumApp }) {
     <View style={styles.container}>
       <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraTop]} />
       <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraBottom]} />
-
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.wordmark}>MUNTEUM</Text>
-          <Text style={styles.headerTitle}>읽고 남기는 조용한 문장과 감상</Text>
-          <Text style={styles.headerSubtitle}>{app.currentUser?.nickname}님의 독서감상문을 다시 꺼내보세요.</Text>
-        </View>
-        <Pressable
-          onPress={() => app.setState((prev) => ({ ...prev, sessionUserId: null }))}
-          style={styles.ghostPill}
-        >
-          <Text style={styles.ghostPillLabel}>로그아웃</Text>
-        </Pressable>
-      </View>
 
       <ScrollView contentContainerStyle={styles.content}>
         {app.activeTab === "home" ? (
@@ -179,8 +165,6 @@ export function AppOverlays({ app }: { app: MunteumApp }) {
         onClose={() => app.setOverlay(null)}
         onDelete={() => (app.overlay?.type === "delete-note" ? app.handleDeleteNote(app.overlay.noteId) : undefined)}
       />
-
-      {app.toast ? <Toast toast={app.toast} /> : null}
     </>
   );
 }

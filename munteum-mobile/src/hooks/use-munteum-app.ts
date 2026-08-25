@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   AppState,
   Book,
@@ -75,6 +75,19 @@ export function useMunteumApp() {
   const filteredLibrary = userBooks
     .filter((item) => libraryFilter === "ALL" || item.status === libraryFilter)
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+
+  function openBookDetail(userBookId: string) {
+    const now = new Date().toISOString();
+
+    setState((prev) => ({
+      ...prev,
+      userBooks: prev.userBooks.map((item) =>
+        item.id === userBookId ? { ...item, lastViewedAt: now } : item,
+      ),
+    }));
+    setOverlay({ type: "book", userBookId });
+  }
+
   const selectedBookDetail =
     overlay?.type === "book" ? userBooks.find((item) => item.id === overlay.userBookId) ?? null : null;
   const selectedBookNotes = selectedBookDetail && notesByUserBookId[selectedBookDetail.id] ? [notesByUserBookId[selectedBookDetail.id]] : [];
@@ -99,7 +112,13 @@ export function useMunteumApp() {
   };
   const recentFinished = userBooks
     .filter((item) => item.status === "FINISHED")
-    .sort((a, b) => (b.finishedAt ?? "").localeCompare(a.finishedAt ?? ""))
+    .sort((a, b) => {
+      const recentCompare = (b.lastViewedAt ?? "").localeCompare(a.lastViewedAt ?? "");
+      if (recentCompare !== 0) {
+        return recentCompare;
+      }
+      return (b.finishedAt ?? "").localeCompare(a.finishedAt ?? "");
+    })
     .slice(0, 5);
 
   const searchResults = searchCatalog.filter((book) => {
@@ -118,15 +137,6 @@ export function useMunteumApp() {
     setToast({ kind, message });
     setTimeout(() => setToast(null), 2200);
   }
-
-  useEffect(() => {
-    if (!storageError) {
-      return;
-    }
-
-    setToast({ kind: "error", message: storageError });
-    setStorageError(null);
-  }, [setStorageError, storageError]);
 
   const { handleAuth } = useAuthActions({
     state,
@@ -217,6 +227,7 @@ export function useMunteumApp() {
     currentReadingBook,
     recentNotes,
     filteredLibrary,
+    openBookDetail,
     selectedBookDetail,
     selectedBookNotes,
     selectedEditNote,

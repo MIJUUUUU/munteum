@@ -29,6 +29,7 @@ export type UserBook = {
   review: string | null;
   createdAt: string;
   updatedAt: string;
+  lastViewedAt?: string | null;
 };
 
 export type Note = {
@@ -176,6 +177,7 @@ export const initialState: AppState = {
       review: null,
       createdAt: "2026-08-18T09:00:00.000Z",
       updatedAt: "2026-08-21T12:00:00.000Z",
+      lastViewedAt: "2026-08-24T09:30:00.000Z",
     },
     {
       id: "user-book-demo-2",
@@ -188,6 +190,7 @@ export const initialState: AppState = {
       review: "오래 두고 다시 펼쳐보고 싶은 책.",
       createdAt: "2026-08-05T09:00:00.000Z",
       updatedAt: "2026-08-16T12:00:00.000Z",
+      lastViewedAt: "2026-08-25T08:20:00.000Z",
     },
     {
       id: "user-book-demo-3",
@@ -200,6 +203,7 @@ export const initialState: AppState = {
       review: null,
       createdAt: "2026-08-20T09:00:00.000Z",
       updatedAt: "2026-08-20T09:00:00.000Z",
+      lastViewedAt: null,
     },
   ],
   notes: [
