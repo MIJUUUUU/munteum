@@ -18,7 +18,6 @@ type MunteumApp = ReturnType<typeof useMunteumApp>;
 export function MainShell({ app }: { app: MunteumApp }) {
   return (
     <View style={styles.container}>
-      <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraTop]} />
       <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraBottom]} />
 
       <ScrollView contentContainerStyle={styles.content}>

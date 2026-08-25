@@ -104,13 +104,6 @@ export const styles = StyleSheet.create({
     borderRadius: 999,
     opacity: 0.65,
   },
-  shellAuraTop: {
-    width: 300,
-    height: 300,
-    top: -90,
-    right: -96,
-    backgroundColor: "rgba(214,198,255,0.44)",
-  },
   shellAuraBottom: {
     width: 250,
     height: 250,
