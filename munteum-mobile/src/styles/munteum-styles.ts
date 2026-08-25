@@ -615,7 +615,7 @@ export const styles = StyleSheet.create({
     borderRadius: 34,
     paddingHorizontal: 18,
     paddingTop: 16,
-    paddingBottom: 28,
+    paddingBottom: 20,
     shadowColor: "#000",
     shadowOpacity: 0.14,
     shadowRadius: 22,
@@ -653,7 +653,7 @@ export const styles = StyleSheet.create({
   },
   overlayContent: {
     gap: 12,
-    paddingBottom: 40,
+    paddingBottom: 20,
   },
   overlayContentCompact: {
     paddingBottom: 8,
