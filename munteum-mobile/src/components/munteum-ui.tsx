@@ -128,7 +128,9 @@ export function Overlay({
               <Text style={styles.tagButtonLabel}>닫기</Text>
             </Pressable>
           </View>
-          <ScrollView contentContainerStyle={styles.overlayContent}>{children}</ScrollView>
+          <ScrollView contentContainerStyle={[styles.overlayContent, compact && styles.overlayContentCompact]}>
+            {children}
+          </ScrollView>
         </View>
       </View>
     </Modal>

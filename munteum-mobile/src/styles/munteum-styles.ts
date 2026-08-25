@@ -640,6 +640,9 @@ export const styles = StyleSheet.create({
     gap: 12,
     paddingBottom: 40,
   },
+  overlayContentCompact: {
+    paddingBottom: 8,
+  },
   overlayDescription: {
     fontSize: 14,
     lineHeight: 22,
