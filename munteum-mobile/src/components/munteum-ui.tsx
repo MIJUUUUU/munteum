@@ -114,7 +114,7 @@ export function Overlay({
   children: ReactNode;
 }) {
   return (
-    <Modal animationType="slide" transparent visible={visible}>
+    <Modal animationType="fade" transparent visible={visible}>
       <View style={styles.overlayBackdrop}>
         <View style={[styles.overlayCard, compact && styles.overlayCompact]}>
           <View style={styles.overlayHeader}>
