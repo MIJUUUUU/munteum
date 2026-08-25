@@ -32,7 +32,11 @@ export function Card({
 export function BookCover({ book, large }: { book: Book; large?: boolean }) {
   return (
     <View style={[styles.cover, large ? styles.coverLarge : styles.coverSmall, { backgroundColor: book.coverColor }]}>
-      <View style={[styles.coverAccent, { backgroundColor: book.accentColor }]} />
+      <View style={[styles.coverGlow, styles.coverGlowTop, { backgroundColor: "#FFFFFF" }]} />
+      <View style={[styles.coverGlow, styles.coverGlowAurora, { backgroundColor: book.accentColor }]} />
+      <View style={[styles.coverGlow, styles.coverGlowBase, { backgroundColor: "#F8EBDD" }]} />
+      <View style={[styles.coverSheen, { backgroundColor: `${book.accentColor}22` }]} />
+      <View style={[styles.coverAccent, { backgroundColor: `${book.accentColor}CC` }]} />
       <View style={styles.coverTextWrap}>
         <Text numberOfLines={2} style={[styles.coverTitle, large && styles.coverTitleLarge]}>
           {book.title}
