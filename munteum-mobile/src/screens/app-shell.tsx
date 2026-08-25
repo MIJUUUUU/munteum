@@ -24,9 +24,6 @@ export function MainShell({ app }: { app: MunteumApp }) {
       <View style={styles.header}>
         <View>
           <Text style={styles.wordmark}>MUNTEUM</Text>
-          <View style={styles.headerMoodPill}>
-            <Text style={styles.headerMoodLabel}>Today&apos;s Quiet Reading</Text>
-          </View>
           <Text style={styles.headerTitle}>읽고 남기는 조용한 문장과 감상</Text>
           <Text style={styles.headerSubtitle}>{app.currentUser?.nickname}님의 독서감상문을 다시 꺼내보세요.</Text>
         </View>

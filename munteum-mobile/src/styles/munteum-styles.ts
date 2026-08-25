@@ -133,21 +133,6 @@ export const styles = StyleSheet.create({
     letterSpacing: 3,
     color: "#8B6748",
   },
-  headerMoodPill: {
-    alignSelf: "flex-start",
-    marginTop: 10,
-    backgroundColor: "rgba(255,255,255,0.58)",
-    borderRadius: 999,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.5)",
-  },
-  headerMoodLabel: {
-    fontSize: 11,
-    letterSpacing: 0.6,
-    color: "#7C756E",
-  },
   headerTitle: {
     marginTop: 12,
     fontSize: 28,
