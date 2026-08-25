@@ -624,8 +624,10 @@ export const styles = StyleSheet.create({
   },
   overlayCompact: {
     alignSelf: "center",
-    width: "88%",
-    maxHeight: "28%",
+    width: "84%",
+    maxWidth: 420,
+    minHeight: 220,
+    maxHeight: 240,
     paddingTop: 14,
     paddingBottom: 20,
   },
@@ -646,6 +648,10 @@ export const styles = StyleSheet.create({
   overlayTitleCentered: {
     textAlign: "center",
   },
+  overlayTitleCompact: {
+    fontSize: 18,
+    lineHeight: 26,
+  },
   overlayContent: {
     gap: 12,
     paddingBottom: 40,
@@ -657,6 +663,9 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 22,
     color: COLORS.muted,
+  },
+  overlayDescriptionCentered: {
+    textAlign: "center",
   },
   fieldWrap: {
     gap: 8,
