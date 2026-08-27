@@ -32,8 +32,6 @@ export function HomeScreen({
         {currentReadingBook ? (
           <Pressable onPress={() => onOpenBook(currentReadingBook.id)}>
             <BookCover book={booksById[currentReadingBook.bookId]} large />
-            <Text style={styles.bookTitle}>{booksById[currentReadingBook.bookId].title}</Text>
-            <Text style={styles.bookMeta}>{booksById[currentReadingBook.bookId].author}</Text>
             <Text style={styles.heroPrompt}>오늘은 어떤 문장이 가장 오래 남았나요?</Text>
             <Text style={styles.heroMetaLine}>
               {currentReadingBook.startedAt ? `시작 ${formatDate(currentReadingBook.startedAt)}` : "읽고 있어요"}
