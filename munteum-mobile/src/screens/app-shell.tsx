@@ -19,6 +19,8 @@ export function MainShell({ app }: { app: MunteumApp }) {
   return (
     <View style={styles.container}>
       <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraBottom]} />
+      <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraTop]} />
+      <View pointerEvents="none" style={[styles.shellAura, styles.shellAuraSide]} />
 
       <ScrollView contentContainerStyle={styles.content}>
         {app.activeTab === "home" ? (
