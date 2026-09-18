@@ -1,13 +1,13 @@
 import { StyleSheet } from "react-native";
 
 export const COLORS = {
-  bg: "#F6EFE4",
-  paper: "#FFF9F1",
-  card: "rgba(255,255,255,0.78)",
+  bg: "#F4EDE2",
+  paper: "#FCF6EE",
+  card: "rgba(255,250,243,0.82)",
   ink: "#17212B",
-  muted: "#6F756F",
-  line: "rgba(37,32,27,0.07)",
-  warm: "#F3E4CF",
+  muted: "#746F68",
+  line: "rgba(55,43,30,0.08)",
+  warm: "#EEDFC7",
   accent: "#143642",
   danger: "#B74343",
 };
@@ -105,11 +105,11 @@ export const styles = StyleSheet.create({
     opacity: 0.65,
   },
   shellAuraBottom: {
-    width: 250,
-    height: 250,
-    top: 240,
-    left: -112,
-    backgroundColor: "rgba(255,219,187,0.28)",
+    width: 240,
+    height: 240,
+    top: 256,
+    left: -108,
+    backgroundColor: "rgba(234,210,182,0.22)",
   },
   content: {
     paddingTop: 12,
@@ -121,16 +121,16 @@ export const styles = StyleSheet.create({
     borderRadius: 34,
     padding: 1,
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.52)",
+    borderColor: "rgba(255,255,255,0.6)",
     overflow: "hidden",
-    shadowColor: "#D2C1A7",
-    shadowOpacity: 0.18,
-    shadowRadius: 24,
+    shadowColor: "#C9B8A0",
+    shadowOpacity: 0.14,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 14 },
     elevation: 6,
   },
   cardInner: {
-    backgroundColor: "rgba(255,251,245,0.88)",
+    backgroundColor: "rgba(255,252,247,0.92)",
     borderRadius: 33,
     padding: 18,
     gap: 14,
@@ -145,14 +145,14 @@ export const styles = StyleSheet.create({
     height: 170,
     top: -60,
     right: -30,
-    backgroundColor: "rgba(232,225,250,0.58)",
+    backgroundColor: "rgba(246,237,226,0.82)",
   },
   cardOrbBottom: {
     width: 140,
     height: 140,
     bottom: -78,
     left: -30,
-    backgroundColor: "rgba(255,233,204,0.34)",
+    backgroundColor: "rgba(232,216,193,0.26)",
   },
   cardSheen: {
     position: "absolute",
@@ -175,7 +175,7 @@ export const styles = StyleSheet.create({
     color: COLORS.ink,
   },
   tagButton: {
-    backgroundColor: "rgba(244,229,206,0.92)",
+    backgroundColor: "rgba(240,226,204,0.86)",
     borderRadius: 999,
     paddingHorizontal: 14,
     paddingVertical: 9,
@@ -273,9 +273,9 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: "rgba(255,255,255,0.68)",
+    backgroundColor: "rgba(252,246,238,0.94)",
     fontSize: 12,
-    color: "#7A746D",
+    color: "#81776B",
   },
   caption: {
     marginTop: 4,
@@ -283,23 +283,23 @@ export const styles = StyleSheet.create({
     color: COLORS.muted,
   },
   noteCard: {
-    backgroundColor: "rgba(255,249,241,0.96)",
+    backgroundColor: "rgba(252,246,238,0.94)",
     borderRadius: 28,
     paddingHorizontal: 18,
     paddingVertical: 18,
     gap: 12,
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.75)",
+    borderColor: "rgba(255,255,255,0.68)",
   },
   noteEyebrow: {
     alignSelf: "flex-start",
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: "rgba(244,229,206,0.72)",
+    backgroundColor: "rgba(236,223,201,0.72)",
     fontSize: 11,
     fontWeight: "600",
-    color: "#8B735C",
+    color: "#88735C",
   },
   notePreview: {
     fontSize: 18,
@@ -315,7 +315,7 @@ export const styles = StyleSheet.create({
   },
   noteMeta: {
     fontSize: 13,
-    color: "#7A746D",
+    color: "#81776B",
   },
   emptyState: {
     backgroundColor: COLORS.paper,
@@ -369,7 +369,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 11,
     borderRadius: 999,
-    backgroundColor: "rgba(243,228,207,0.84)",
+    backgroundColor: "rgba(238,226,206,0.88)",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.56)",
   },
@@ -449,7 +449,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 18,
     paddingVertical: 10,
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(255,252,247,0.96)",
   },
   dayCellActive: {
     backgroundColor: COLORS.ink,
@@ -485,7 +485,7 @@ export const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: "rgba(255,249,241,0.92)",
+    backgroundColor: "rgba(252,246,238,0.92)",
     borderRadius: 26,
     paddingVertical: 20,
     paddingHorizontal: 10,
@@ -496,11 +496,11 @@ export const styles = StyleSheet.create({
     overflow: "hidden",
   },
   statCardFeatured: {
-    backgroundColor: "rgba(246,232,214,0.96)",
+    backgroundColor: "rgba(241,230,211,0.96)",
     transform: [{ translateY: -4 }],
   },
   statCardSoft: {
-    backgroundColor: "rgba(252,247,239,0.98)",
+    backgroundColor: "rgba(250,244,235,0.98)",
   },
   statAccentDot: {
     position: "absolute",
@@ -508,10 +508,10 @@ export const styles = StyleSheet.create({
     width: 7,
     height: 7,
     borderRadius: 999,
-    backgroundColor: "rgba(209,178,132,0.55)",
+    backgroundColor: "rgba(197,167,126,0.42)",
   },
   statAccentDotFeatured: {
-    backgroundColor: "#D1B284",
+    backgroundColor: "#C7A77E",
   },
   statValue: {
     fontSize: 30,
@@ -528,10 +528,10 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   statLabelFeatured: {
-    color: "#7D6B56",
+    color: "#816F5A",
   },
   menuRow: {
-    backgroundColor: "rgba(255,249,241,0.94)",
+    backgroundColor: "rgba(252,246,238,0.9)",
     borderRadius: 24,
     paddingHorizontal: 16,
     paddingVertical: 15,
@@ -549,17 +549,17 @@ export const styles = StyleSheet.create({
   menuChevron: {
     fontSize: 24,
     lineHeight: 24,
-    color: "#B9AA94",
+    color: "#B7A792",
   },
   logoutChevron: {
-    color: "#C8B8A0",
+    color: "#C4B39A",
   },
   bottomBar: {
     position: "absolute",
     left: 16,
     right: 16,
     bottom: 14,
-    backgroundColor: "rgba(255,252,247,0.94)",
+    backgroundColor: "rgba(255,251,246,0.96)",
     borderRadius: 34,
     paddingHorizontal: 14,
     paddingVertical: 13,
@@ -568,9 +568,9 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.78)",
-    shadowColor: "#CFBFA8",
-    shadowOpacity: 0.22,
-    shadowRadius: 22,
+    shadowColor: "#CCBCA4",
+    shadowOpacity: 0.18,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 12 },
     elevation: 8,
   },
@@ -582,7 +582,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
   },
   navButtonActive: {
-    backgroundColor: "rgba(243,228,207,0.58)",
+    backgroundColor: "rgba(239,227,207,0.7)",
   },
   navDot: {
     width: 6,
@@ -591,7 +591,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   navDotActive: {
-    backgroundColor: "#D1B284",
+    backgroundColor: "#C9AA80",
   },
   navLabel: {
     fontSize: 12,
@@ -626,11 +626,11 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 18,
     paddingVertical: 28,
-    backgroundColor: "rgba(23,33,43,0.32)",
+    backgroundColor: "rgba(23,33,43,0.28)",
   },
   overlayCard: {
     maxHeight: "86%",
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(255,252,248,0.98)",
     borderRadius: 34,
     paddingHorizontal: 18,
     paddingTop: 16,
@@ -713,7 +713,7 @@ export const styles = StyleSheet.create({
   searchResult: {
     flexDirection: "row",
     gap: 12,
-    backgroundColor: COLORS.paper,
+    backgroundColor: "rgba(252,246,238,0.96)",
     borderRadius: 24,
     padding: 12,
     alignItems: "center",
@@ -722,7 +722,7 @@ export const styles = StyleSheet.create({
     width: 86,
   },
   statusRow: {
-    backgroundColor: COLORS.paper,
+    backgroundColor: "rgba(252,246,238,0.96)",
     borderRadius: 22,
     paddingHorizontal: 16,
     paddingVertical: 14,
@@ -755,7 +755,7 @@ export const styles = StyleSheet.create({
   },
   secondaryInlineButton: {
     flex: 1,
-    backgroundColor: COLORS.paper,
+    backgroundColor: "rgba(252,246,238,0.96)",
     borderRadius: 999,
     alignItems: "center",
     paddingVertical: 14,
@@ -790,7 +790,7 @@ export const styles = StyleSheet.create({
   ratingButton: {
     flex: 1,
     borderRadius: 18,
-    backgroundColor: COLORS.paper,
+    backgroundColor: "rgba(252,246,238,0.96)",
     alignItems: "center",
     paddingVertical: 12,
   },
